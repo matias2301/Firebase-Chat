@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "fire-letschat": {
+      "hosting": {
+        "Firebase-Chat": [
+          "fire-letschat"
+        ]
+      }
+    }
+  }
+}
