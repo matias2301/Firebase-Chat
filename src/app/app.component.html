@@ -1,5 +1,18 @@
 <div class="container main-container">
   <h1>LetsChat Firebase</h1>
 
-  <app-chat></app-chat>
+  <div class="col-md-12 text-end" *ngIf="_chatService.user.uid">
+    <button
+      type="button"
+      class="btn btn-outline-danger"
+      (click)="_chatService.logout()"
+    >
+      Logout
+    </button>
+  </div>
+
+  <app-login *ngIf="!_chatService.user.uid"></app-login>
+
+  <app-chat *ngIf="_chatService.user.uid"></app-chat>
+  
 </div>

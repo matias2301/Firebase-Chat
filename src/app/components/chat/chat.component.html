@@ -1,26 +1,23 @@
-<!-- <ul>
-  <li class="text" *ngFor="let chat of chats | async">
-    {{chat.message}}
-  </li>
-</ul> -->
-<h1>Chat</h1>
-<hr>
-
 <div class="chat-window" id="app-messages">
-    <div class="text-end">        
-        <span class="badge bg-primary">Matias</span>
-        <p>
-            Primer mensaje del chat
-        </p>
-    </div>
+    <div class="title">Chat</div>
+    <hr>
 
-    <div>
-        <span class="badge bg-success">Mayra</span>
-        <p>
-            Respuesta al primer mensaje
-        </p>
+    <div #scroll class="box-messages">
+        <div            
+            *ngFor="let chat of _chatService.chats"                    
+            [ngStyle]="{'text-align': _chatService.user.uid == chat.uid ? 'right' : 'left'}"
+        >        
+            <span
+                class="badge"
+                [ngClass]="{ 'bg-primary': _chatService.user.uid == chat.uid,
+                             'bg-success': _chatService.user.uid !== chat.uid }"                 
+            >{{ chat.name }}</span>
+            <p>
+                {{ chat.message }}
+            </p>
+        </div>
+
     </div>
-    
     <input
         type="text"    
         [(ngModel)]="message"
